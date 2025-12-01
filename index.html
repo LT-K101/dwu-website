@@ -931,16 +931,16 @@
         <!-- About Start -->
         <div class="section edubin-about-section edubin-about-section-02 section-padding">
             <div class="container">
-                <div class="about-wrap" style="position: relative; overflow: hidden;">
-                    <!-- Full Background Video -->
-                    <video id="dwu-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; border-radius: 8px;">
-                        <source src="assets/images/video/Divine%20Word%20University-Introduction.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div id="play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; z-index: 2;">
-                        <a class="play-btn-inline" onclick="playVideo()" style="width: 90px; height: 90px; line-height: 90px; text-align: center; font-size: 20px; background-color: #ffc600; color: #07294d; border-radius: 50%; display: inline-block; box-shadow: 0 0 30px rgba(255, 198, 0, 0.5);"><i class="fa fa-play"></i></a>
+                <div class="about-wrap" style="position: relative; overflow: hidden; min-height: 600px;">
+                    <!-- Google Drive Video Background -->
+                    <div id="video-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
+                        <iframe id="dwu-video" src="https://drive.google.com/file/d/1GD6_0aSlGnMpYmU5Mwau-SVHAvixTPBY/preview" style="position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%) scale(1.5); border: 0; pointer-events: none;" allow="autoplay" allowfullscreen></iframe>
                     </div>
-                    <div class="row align-items-center" style="position: relative; z-index: 1;">
+                    <!-- Play Button Overlay -->
+                    <div id="play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; z-index: 2;">
+                        <a class="play-btn-inline" onclick="playDriveVideo()" style="width: 90px; height: 90px; line-height: 90px; text-align: center; font-size: 20px; background-color: #ffc600; color: #07294d; border-radius: 50%; display: inline-block; box-shadow: 0 0 30px rgba(255, 198, 0, 0.5);"><i class="fa fa-play"></i></a>
+                    </div>
+                    <div class="row align-items-center" style="position: relative; z-index: 1; pointer-events: none;">
                         <div class="col-lg-7">
                             <div class="about-event">
                                 <div class="event-title">
