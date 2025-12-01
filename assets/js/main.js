@@ -617,54 +617,8 @@
   });
 
    /*--
-        DWU Video Player - Google Drive with Auto Reset
+        DWU Video Player - Native HTML5 with Auto Reset
     -----------------------------------*/
-    var videoResetTimer = null;
-    
-    window.playDriveVideo = function() {
-        var videoFrame = document.getElementById('dwu-video');
-        var playOverlay = document.getElementById('play-overlay');
-        
-        if (videoFrame && playOverlay) {
-            // Hide the play button overlay
-            playOverlay.style.display = 'none';
-            
-            // Enable interaction with iframe
-            videoFrame.style.pointerEvents = 'auto';
-            
-            // Set timer to auto-reset after video duration
-            // Adjust time as needed - currently 3 minutes 5 seconds
-            clearTimeout(videoResetTimer);
-            videoResetTimer = setTimeout(function() {
-                resetDriveVideo();
-            }, 185000); // 185 seconds = 3 minutes 5 seconds
-        }
-    }
-    
-    window.resetDriveVideo = function() {
-        var videoFrame = document.getElementById('dwu-video');
-        var playOverlay = document.getElementById('play-overlay');
-        
-        if (videoFrame && playOverlay) {
-            // Clear any pending reset timer
-            clearTimeout(videoResetTimer);
-            
-            // Disable interaction with iframe first
-            videoFrame.style.pointerEvents = 'none';
-            
-            // Show play button overlay immediately
-            playOverlay.style.display = 'block';
-            
-            // Then reload iframe to reset to thumbnail
-            var videoSrc = videoFrame.src;
-            videoFrame.src = '';
-            setTimeout(function() {
-                videoFrame.src = videoSrc;
-            }, 200);
-        }
-    }
-    
-    // Original video player code (kept for compatibility)
     window.playVideo = function() {
         var video = document.getElementById('dwu-video');
         var playOverlay = document.getElementById('play-overlay');
@@ -679,12 +633,13 @@
         }
     }
     
-    // Show play button and reset video when it ends
+    // Automatically reset video when it ends
     $(document).ready(function() {
         var video = document.getElementById('dwu-video');
         var playOverlay = document.getElementById('play-overlay');
         
         if (video && playOverlay && video.tagName === 'VIDEO') {
+            // Reset when video ends
             video.addEventListener('ended', function() {
                 video.controls = false;
                 video.currentTime = 0; // Reset to beginning
