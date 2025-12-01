@@ -1,0 +1,11 @@
+@"
+# OS files
+Thumbs.db
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+"@ | Out-File -FilePath ".gitignore" -Encoding utf8
