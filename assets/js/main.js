@@ -44,17 +44,75 @@
 
 
   /*--
-        Mobile Menu
+        Mobile Menu Toggle
+  -----------------------------------*/
+  // Simple mobile menu toggle with slide-in sidebar
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileNavMenu = document.getElementById('mobileNavMenu');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  
+  function closeMobileMenu() {
+    if (mobileMenuToggle && mobileNavMenu && mobileMenuOverlay) {
+      mobileMenuToggle.classList.remove('active');
+      mobileNavMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+  
+  function openMobileMenu() {
+    if (mobileMenuToggle && mobileNavMenu && mobileMenuOverlay) {
+      mobileMenuToggle.classList.add('active');
+      mobileNavMenu.classList.add('active');
+      mobileMenuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  if (mobileMenuToggle && mobileNavMenu && mobileMenuOverlay) {
+    // Toggle menu on hamburger click
+    mobileMenuToggle.addEventListener('click', function() {
+      if (this.classList.contains('active')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+    
+    // Close menu when clicking overlay
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    
+    // Close menu when clicking the X button (::before pseudo-element area)
+    mobileNavMenu.addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+      
+      // Check if click is in the top-right area (close button)
+      if (clickX > rect.width - 60 && clickY < 60) {
+        closeMobileMenu();
+      }
+    });
+    
+    // Handle sub-menu toggles
+    const menuItems = mobileNavMenu.querySelectorAll('li.about-menu, li.cour-menu, li.rese-menu, li.lear-menu, li.admi-menu');
+    menuItems.forEach(function(item) {
+      item.classList.add('has-submenu');
+      const link = item.querySelector('a');
+      if (link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          item.classList.toggle('active');
+        });
+      }
+    });
+  }
+
+  /*--
+        Desktop Menu (meanmenu for desktop only)
   -----------------------------------*/
 	$('#mobile-menu').meanmenu({
 		meanMenuContainer: '.mobile-menu',
-		meanScreenWidth: "991",
-		meanExpand: ['<i class="fas fa-plus"></i>'],
-	});
-	
-	// Initialize mobile menu for the dedicated mobile nav
-	$('#mobile-menu-nav').meanmenu({
-		meanMenuContainer: '.header-menu-mobile',
 		meanScreenWidth: "991",
 		meanExpand: ['<i class="fas fa-plus"></i>'],
 	});

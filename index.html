@@ -61,7 +61,7 @@
         <!-- Header Start  -->
         <div class="section header-section">
 
-            <div class="header-top-section d-none d-lg-block">
+            <div class="header-top-section">
                 <div class="container">
                     <div class="header-top-wrap">
                         <!-- Header Top Info Start  -->
@@ -109,8 +109,19 @@
                         <div class="header-right">
                             <!-- Mobile Menu (visible on mobile only) -->
                             <div class="header-menu-mobile d-lg-none">
-                                <div class="main-menu">
-                                    <nav id="mobile-menu-nav">
+                                <!-- Hamburger Button -->
+                                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                                
+                                <!-- Mobile Menu Overlay -->
+                                <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+                                
+                                <!-- Mobile Navigation Sidebar -->
+                                <div class="mobile-nav-menu" id="mobileNavMenu">
+                                    <nav>
                                         <ul>
                                             <li class=""><a href="index.html">Home</a></li>
                                             
