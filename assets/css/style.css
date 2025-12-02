@@ -485,6 +485,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+  transform: translate(-50%, -50%);
+}
 .preloader .rubix-cube .layer {
   width: 14px;
   height: 14px;
