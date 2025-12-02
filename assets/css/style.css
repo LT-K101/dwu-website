@@ -495,41 +495,66 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .preloader .rubix-cube .layer-1 {
   left: 0px;
   top: 0px;
-  animation: rubixcube4 2s infinite linear;
+  animation: rubixcube4 2s infinite linear, colorChange 3s infinite;
+  animation-delay: 0s, 0s;
 }
 .preloader .rubix-cube .layer-2 {
   left: 16px;
   top: 0px;
-  animation: rubixcube3 2s infinite linear;
+  animation: rubixcube3 2s infinite linear, colorChange 3s infinite;
+  animation-delay: 0s, 0.375s;
 }
 .preloader .rubix-cube .layer-3 {
   left: 32px;
   top: 0px;
+  animation: colorChange 3s infinite;
+  animation-delay: 0.75s;
 }
 .preloader .rubix-cube .layer-4 {
   left: 0px;
   top: 16px;
-  animation: rubixcube5 2s infinite linear;
+  animation: rubixcube5 2s infinite linear, colorChange 3s infinite;
+  animation-delay: 0s, 1.125s;
 }
 .preloader .rubix-cube .layer-5 {
   left: 16px;
   top: 16px;
-  animation: rubixcube2 2s infinite linear;
+  animation: rubixcube2 2s infinite linear, colorChange 3s infinite;
+  animation-delay: 0s, 1.5s;
 }
 .preloader .rubix-cube .layer-6 {
   left: 32px;
   top: 16px;
-  animation: rubixcube1 2s infinite linear;
+  animation: rubixcube1 2s infinite linear, colorChange 3s infinite;
+  animation-delay: 0s, 1.875s;
 }
 .preloader .rubix-cube .layer-7 {
   left: 0px;
   top: 32px;
-  animation: rubixcube6 2s infinite linear;
+  animation: rubixcube6 2s infinite linear, colorChange 3s infinite;
+  animation-delay: 0s, 2.25s;
 }
 .preloader .rubix-cube .layer-8 {
   left: 16px;
   top: 32px;
-  animation: rubixcube7 2s infinite linear;
+  animation: rubixcube7 2s infinite linear, colorChange 3s infinite;
+  animation-delay: 0s, 2.625s;
+}
+
+/* Balanced color change animation: Yellow → Green → Black */
+@keyframes colorChange {
+  0% {
+    background-color: #ffc600; /* Yellow */
+  }
+  33.33% {
+    background-color: #34a853; /* Green */
+  }
+  66.66% {
+    background-color: #000000; /* Black */
+  }
+  100% {
+    background-color: #ffc600; /* Yellow */
+  }
 }
 
 @keyframes rubixcube1 {
@@ -1061,7 +1086,7 @@ textarea:-ms-input-placeholder {
 }
 
 .header-top-section {
-  background: #021D3A;
+  background: #1a1a1a;
 }
 
 .header-top-wrap {
@@ -1892,18 +1917,46 @@ textarea:-ms-input-placeholder {
 /*----------------------------------------*/
 /* mean menu customize */
 .mean-container a.meanmenu-reveal {
-  display: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  background: #fff;
+  border: 2px solid #1a1a1a;
+  border-radius: 5px;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.mean-container a.meanmenu-reveal span {
+  display: block;
+  background: #1a1a1a;
+  height: 3px;
+  margin: 4px auto;
+  width: 20px;
+  border-radius: 1px;
 }
 
 .mean-container .mean-nav {
-  background: none;
+  background: #fff;
   margin-top: 0;
 }
 
 .mean-container .mean-bar {
-  padding: 0;
-  min-height: auto;
-  background: none;
+  padding: 10px 0;
+  min-height: 60px;
+  background: #fff;
+  position: relative;
+  border-bottom: 1px solid #ebebeb;
 }
 
 .mean-container .mean-nav > ul {
@@ -1914,8 +1967,123 @@ textarea:-ms-input-placeholder {
   display: block !important;
 }
 
-.mean-container a.meanmenu-reveal {
-  display: none !important;
+/* Show header menu on mobile for meanmenu to work */
+@media only screen and (max-width: 991px) {
+  .header-menu {
+    display: block !important;
+  }
+  
+  .main-menu {
+    display: none !important;
+  }
+  
+  .mean-container {
+    display: block !important;
+  }
+  
+  /* Mobile header layout - logo and hamburger side by side */
+  .header-bottom-section {
+    padding: 10px 0;
+  }
+  
+    .header-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        gap: 40px;
+    }  .header-logo {
+    flex: 0 0 auto;
+    z-index: 10;
+    padding-right: 30px;
+  }
+  
+  .header-logo img {
+    max-height: 50px;
+    width: auto;
+  }
+  
+  /* Mobile menu specific styles */
+  .header-menu-mobile {
+    display: block !important;
+    width: auto;
+    position: relative;
+    padding-left: 30px;
+  }
+  
+  /* Hide the original navigation - meanmenu clones it into .mean-nav */
+  /* Use position absolute to hide it off-screen so meanmenu can still clone it */
+  .header-menu-mobile .main-menu,
+  .header-menu-mobile nav#mobile-menu-nav {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+  }
+  
+  .header-menu-mobile .mean-container .mean-bar {
+    background: transparent;
+    padding: 0;
+    border: none;
+    min-height: auto;
+  }
+  
+  .header-menu-mobile .mean-container a.meanmenu-reveal {
+    display: block !important;
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+  }
+  
+  /* Hide ALL expand icons (plus signs) from the hamburger button */
+  .mean-container a.meanmenu-reveal .mean-push,
+  .mean-container a.meanmenu-reveal i,
+  .meanmenu-reveal .mean-push,
+  .meanmenu-reveal i.fas,
+  .meanmenu-reveal i.fa-plus {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  /* Only show the hamburger lines */
+  .mean-container a.meanmenu-reveal {
+    font-size: 0 !important;
+  }
+  
+  /* Hide menu navigation by default */
+  .header-menu-mobile .mean-container .mean-nav {
+    display: none !important;
+  }
+  
+  /* Show when meanmenu opens it (when hamburger is clicked) */
+  .header-menu-mobile .mean-container.mean-open .mean-nav {
+    display: block !important;
+  }
+  
+  /* Position the dropdown menu */
+  .header-menu-mobile .mean-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 10px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Hide mega menu content on mobile */
+  .mm-pos {
+    display: none !important;
+  }
+  
+  /* Hide search on mobile */
+  .header-search {
+    display: none !important;
+  }
 }
 
 .mean-container .mean-nav ul li a {
@@ -1973,6 +2141,94 @@ textarea:-ms-input-placeholder {
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   color: var(--tp-heading-primary);
+}
+
+/* Mobile Mega Menu Styles */
+@media only screen and (max-width: 991px) {
+  .mm-pos {
+    position: static;
+    transform: none;
+    left: auto;
+    top: auto;
+    pointer-events: auto;
+    width: 100%;
+  }
+
+  .m-menu {
+    width: 100%;
+    box-shadow: none;
+    background: #f8f8f8;
+    padding: 10px;
+    margin-top: 0;
+  }
+
+  .m-menu-inn {
+    display: block;
+  }
+
+  .mm1-com {
+    width: 100%;
+    float: none;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 5px;
+  }
+
+  .mm1-com:last-child {
+    border-bottom: none;
+  }
+
+  .mm1-com h4,
+  .mm1-com h5 {
+    font-size: 13px;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+  }
+
+  .mm1-com ul li {
+    padding-left: 10px;
+  }
+
+  .mm1-com ul li a {
+    font-size: 13px;
+    line-height: 26px;
+    padding: 3px 0;
+  }
+
+  .mm1-com p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .ed-course-in {
+    margin-bottom: 10px;
+  }
+
+  .ed-course-in img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .mm-r-m-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+  /* Show mega menus on mobile by default when parent is expanded */
+  .mean-container .mean-nav ul li .mm-pos {
+    display: none;
+  }
+
+  .mean-container .mean-nav ul li.mean-clicked > .mm-pos {
+    display: block;
+  }
+
+  .about-mm, .admi-mm, .cour-mm, .rese-mm, .lear-mm {
+    display: block !important;
+  }
 }
 
 /*----------------------------------------*/
@@ -2402,16 +2658,6 @@ textarea:-ms-input-placeholder {
   padding-top: 350px;
   padding-bottom: 120px;
   z-index: 1;
-}
-.edubin-slider-section-03::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.45);
-  z-index: -1;
 }
 .edubin-slider-section-03 .slider-cont {
   position: relative;
@@ -3745,15 +3991,15 @@ textarea:-ms-input-placeholder {
 }
 .category-form .form-title {
   background-color: #07294d;
-  padding-top: 35px;
-  padding-bottom: 40px;
+  padding-top: 15px;
+  padding-bottom: 18px;
   padding-left: 5px;
   padding-right: 5px;
 }
 .category-form .form-title .title {
   color: #ffc600;
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 3px;
 }
 @media only screen and (max-width: 575px) {
   .category-form .form-title .title {
@@ -3766,21 +4012,21 @@ textarea:-ms-input-placeholder {
   color: #fff;
 }
 .category-form .main-form {
-  padding-top: 30px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 55px;
+  padding-top: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
   background-color: #fff;
 }
 .category-form .main-form .single-form {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .category-form .main-form .single-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=file]),
 .category-form .main-form .single-form textarea {
   width: 100%;
-  height: 45px;
-  padding: 0 20px;
-  font-size: 14px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
   color: #8a8a8a;
   border: 1px solid #ebebeb;
   border-radius: 3px;
@@ -4053,23 +4299,13 @@ textarea:-ms-input-placeholder {
     padding: 70px 50px 70px;
   }
 }
-.edubin-about-section-02 .about-wrap::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(310deg, rgba(20, 20, 20, 0.75) 0%, rgba(20, 20, 20, 0.60) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
 .edubin-about-section-02 .about-event {
   box-shadow: none;
-  padding: 0;
+  padding: 40px;
   padding-right: 50px;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.6);
   margin-top: 0;
+  border-radius: 8px;
 }
 .edubin-about-section-02 .about-event .event-title .title {
   color: #ffffff;
@@ -7121,17 +7357,6 @@ textarea:-ms-input-placeholder {
   position: relative;
   z-index: 1;
 }
-.countdown-section::before {
-  background: rgba(20, 20, 20, 0.50) none repeat scroll 0 0;
-  content: "";
-  opacity: 1;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
-}
 @media only screen and (max-width: 1199px) {
   .countdown-section .countdown-cont {
     padding-right: 35px;
@@ -7147,6 +7372,11 @@ textarea:-ms-input-placeholder {
   .countdown-section .countdown-cont {
     padding-right: 0;
   }
+}
+.countdown-section .countdown-cont {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 8px;
 }
 .countdown-section .countdown-cont .sub-title {
   font-size: 30px;
@@ -11230,7 +11460,7 @@ textarea:-ms-input-placeholder {
 /*  24. Footer CSS
 /*----------------------------------------*/
 .footer-top-section {
-  background: #07294D;
+  background: #2c2c2c;
 }
 
 .footer-section-02 {
@@ -11317,7 +11547,7 @@ textarea:-ms-input-placeholder {
 }
 
 .footer-copyright-area {
-  background: #021D3A;
+  background: #1a1a1a;
   padding-top: 20px;
   padding-bottom: 30px;
 }

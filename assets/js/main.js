@@ -51,6 +51,13 @@
 		meanScreenWidth: "991",
 		meanExpand: ['<i class="fas fa-plus"></i>'],
 	});
+	
+	// Initialize mobile menu for the dedicated mobile nav
+	$('#mobile-menu-nav').meanmenu({
+		meanMenuContainer: '.header-menu-mobile',
+		meanScreenWidth: "991",
+		meanExpand: ['<i class="fas fa-plus"></i>'],
+	});
 
    /*--
         Sidebar Js
