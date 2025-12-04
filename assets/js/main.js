@@ -296,6 +296,57 @@
       },
     });
 
+    /*--    
+      Hero Slider
+    -----------------------------------*/  
+    var heroSwiper = new Swiper(".hero-slider-active", {
+      spaceBetween: 0,
+      effect: "fade",
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      speed: 1000,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    // Slide counter and pause button functionality
+    var slideCounter = document.getElementById('slideCounter');
+    var pauseBtn = document.getElementById('pauseBtn');
+    var pauseIcon = document.getElementById('pauseIcon');
+    var isPaused = false;
+    var totalSlides = 5;
+
+    function updateCounter() {
+      var realIndex = heroSwiper.realIndex + 1;
+      slideCounter.textContent = realIndex + '/' + totalSlides;
+    }
+
+    heroSwiper.on('slideChange', function() {
+      updateCounter();
+    });
+
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', function() {
+        if (isPaused) {
+          heroSwiper.autoplay.start();
+          pauseIcon.className = 'fas fa-pause';
+          isPaused = false;
+        } else {
+          heroSwiper.autoplay.stop();
+          pauseIcon.className = 'fas fa-play';
+          isPaused = true;
+        }
+      });
+    }
+
+    updateCounter();
+
+
 
   /*--    
     Counter Up
