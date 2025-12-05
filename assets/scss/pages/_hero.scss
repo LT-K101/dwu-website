@@ -6,9 +6,10 @@
     height: 920px;
     overflow: hidden;
     position: relative;
-    padding-top: 85px;
+    padding-top: 100px; /* Increased from 85px to 100px to account for header */
+    margin-top: 0; /* Ensure no negative margins are pulling it up */
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center top; /* Changed from center 50% to top */
     background-size: cover;
     z-index: 1;
 
@@ -231,7 +232,7 @@
 .edubin-slider-section-03 {
     position: relative;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center 20%;
     background-size: cover;
     padding-top: 350px;
     padding-bottom: 120px;
@@ -1119,7 +1120,7 @@
     
                 & .image-content {
                     left: 0;
-                    bottom: 25px;
+    
                 }
             }
         }
@@ -1133,7 +1134,7 @@
     height: 920px;
     background: #F9EEE1;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center 20%;
     background-size: cover;
     z-index: 1;
 
@@ -1485,7 +1486,7 @@
 .edubin-hero-section-10 {
     background: #EDF9F5;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center 20%;
     background-size: cover;
     position: relative;
     padding-top: 140px;
