@@ -967,6 +967,8 @@ textarea:-ms-input-placeholder {
   top: 0;
   width: 100%;
   z-index: 999;
+  margin: 0;
+  padding: 0;
 }
 .header-section.sticky {
   background: #ffffff;
@@ -983,6 +985,10 @@ textarea:-ms-input-placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 @media only screen and (max-width: 991px) {
   .header-wrap {
@@ -1021,11 +1027,11 @@ textarea:-ms-input-placeholder {
 }
 .main-menu ul li a {
   color: #07294d;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 13px;
+  line-height: 1;
   font-family: "Roboto", sans-serif;
   font-weight: 600;
-  padding: 40px 0;
+  padding: 15px 0;
   display: inline-block;
   transition: 0.3s;
 }
@@ -1121,6 +1127,8 @@ textarea:-ms-input-placeholder {
 
 .header-top-section {
   background: #076415 !important;  /* DWU Green */
+  margin: 0;
+  padding: 0;
 }
 
 .header-top-wrap {
@@ -1131,7 +1139,7 @@ textarea:-ms-input-placeholder {
 }
 .header-top-wrap .header-top-info ul li {
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   line-height: 18px;
@@ -1432,6 +1440,12 @@ textarea:-ms-input-placeholder {
 .header-bottom-section {
   background: #ffffff;
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.07);
+  padding: 0;
+  min-height: 80px;  /* Increased from 70px */
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border-top: none;
 }
 
 .header-cart {
