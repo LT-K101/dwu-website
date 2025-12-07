@@ -991,6 +991,38 @@ textarea:-ms-input-placeholder {
   margin: 0;
 }
 @media only screen and (max-width: 991px) {
+  .header-top-info {
+    border-bottom: none !important;
+    padding: 10px 15px !important;
+  }
+  
+  .header-top-info ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+  
+  .header-top-info ul li {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    flex: 1 0 auto !important;
+    text-align: center !important;
+  }
+  
+  .header-top-info ul li a {
+    display: block !important;
+    padding: 8px 5px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important;
+    font-size: 12px !important;
+  }
+  
   .header-wrap {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -2054,6 +2086,50 @@ textarea:-ms-input-placeholder {
     padding-left: 30px;
   }
   
+  /* Hide quicklinks in mobile view and adjust spacing */
+  @media only screen and (max-width: 991px) {
+    .header-top-section {
+      display: none !important;
+      height: 0 !important;
+      min-height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 0 !important;
+      overflow: hidden !important;
+    }
+    
+    /* Remove any potential space from the header */
+    .header-section {
+      padding-top: 0 !important;
+    }
+    
+    /* Adjust header bottom section */
+    .header-bottom-section {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+    }
+    
+    /* Adjust hero section spacing */
+    .edubin-slider-section-03 {
+      margin-top: 80px !important;  /* Push slider down below header */
+      padding-top: 0 !important;
+    }
+    
+    .hero-slide-item {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Ensure no extra space from the slider */
+    .hero-slider-active,
+    .hero-slider-active .swiper-container,
+    .hero-slider-active .swiper-wrapper,
+    .hero-slider-active .swiper-slide {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+  
   /* Hamburger Button */
   .mobile-menu-toggle {
     width: 40px;
@@ -2240,37 +2316,28 @@ textarea:-ms-input-placeholder {
     }
   }
   
-  /* Hide mega menu content on mobile */
-  .mm-pos {
-    display: none !important;
-  }
-  
-  /* Hide search on mobile */
-  .header-search {
-    display: none !important;
-  }
-  
-  /* Modern mobile top header styling */
-  .header-top-section {
-    background: linear-gradient(135deg, #076415 0%, #076415 100%);
+  /* First line - ALUMNI, INTRANET, LIBRARY */
+  .header-top-info {
+    width: 100%;
     padding: 8px 0;
-  }
-  
-  .header-top-wrap {
-    flex-direction: column;
-    gap: 10px;
-    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 0;
   }
   
   .header-top-info ul {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0 15px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .header-top-info ul li {
-    margin-left: 0 !important;
+    margin: 0;
+    padding: 0;
     padding-left: 0 !important;
     font-size: 12px !important;
     position: relative;
@@ -2281,14 +2348,7 @@ textarea:-ms-input-placeholder {
   }
   
   .header-top-info ul li:not(:last-child)::after {
-    content: '|';
-    color: rgba(255, 255, 255, 0.3);
-    margin: 0 8px;
-    font-weight: 300;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    top: 1px;
+    display: none;
   }
   
   .header-top-info ul li a {
@@ -2330,6 +2390,16 @@ textarea:-ms-input-placeholder {
   .header-social .follow-us {
     font-size: 12px;
     color: #fff;
+  }
+  
+  @media only screen and (max-width: 991px) {
+    .header-social .follow-us {
+      display: none !important;
+    }
+    
+    .header-social ul {
+      margin-left: 0 !important;
+    }
   }
   
   .header-social ul {
@@ -2381,14 +2451,16 @@ textarea:-ms-input-placeholder {
   }
   
   .login-register ul li:not(:last-child)::after {
-    content: '|';
-    color: rgba(255, 255, 255, 0.3);
-    margin: 0 8px;
+    content: none !important;
     font-weight: 300;
     display: inline-block;
     vertical-align: middle;
     position: relative;
     top: 1px;
+  }
+  
+  .login-register ul {
+    gap: 8px !important;
   }
   
   .login-register ul li + li {
@@ -2397,9 +2469,9 @@ textarea:-ms-input-placeholder {
   }
   
   .login-register ul li a {
-    padding: 6px 20px;
-    background: #ffc600;
-    color: #1a1a1a;
+    padding: 6px 15px;
+    background: transparent;
+    color: #ffffff;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
@@ -2408,9 +2480,9 @@ textarea:-ms-input-placeholder {
   }
   
   .login-register ul li a:hover {
-    background: #fff;
+    color: #ffc600;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(255, 198, 0, 0.3);
+    text-decoration: none;
   }
 }
 
@@ -12034,6 +12106,31 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 991px) {
   .footer-widget-wrap {
     padding-top: 50px;
+  }
+  
+  /* Fix quicklinks layout on mobile */
+  .footer-widget {
+    margin-top: 20px;
+  }
+  
+  .widget-link {
+    padding-top: 15px;
+  }
+  
+  .widget-link .link li {
+    display: inline-block;
+    margin: 0 15px 10px 0;
+  }
+  
+  .widget-link .link li a {
+    font-size: 14px;
+    padding: 5px 0;
+    display: inline-block;
+  }
+  
+  .footer-widget .footer-widget-title {
+    font-size: 16px;
+    margin-bottom: 5px;
   }
 }
 
