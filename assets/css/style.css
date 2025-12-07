@@ -2111,28 +2111,67 @@ textarea:-ms-input-placeholder {
     display: none !important;
   }
   
-  /* Mobile header layout - logo and hamburger side by side */
-  .header-bottom-section {
-    padding: 10px 0;
-  }
-  
-  .header-wrap {
+  /* Ensure header-right takes full width and aligns content to the right */
+  .header-right {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    gap: 40px;
+    justify-content: flex-end;
+    width: 100%;
   }
   
+  /* Header layout */
+  .header-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  /* Logo container */
   .header-logo {
-    flex: 0 0 auto;
-    z-index: 10;
-    padding-right: 30px;
+    grid-column: 1;
+    justify-self: start;
+  }
+  
+  /* Mobile menu container */
+  .header-menu-mobile {
+    grid-column: 2;
+    justify-self: end;
+  }
+  
+  /* Adjust header right container */
+  .header-right {
+    display: contents; /* Allow grid children to participate in the grid layout */
+  }
+  
+  /* Mobile header layout - super compact */
+  .header-bottom-section {
+    padding: 0;
+    line-height: 1;
+  }
+  
+  /* Super compact header height */
+  .header-wrap {
+    min-height: 36px;
+    padding: 0 5px;
+    align-items: center;
+  }
+  
+  /* Adjust logo size in mobile */
+  .header-logo a {
+    display: inline-block;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    transform: scale(0.9);
+    transform-origin: left center;
   }
   
   .header-logo img {
-    max-height: 50px;
+    max-height: 28px;
     width: auto;
+    margin: 0;
+    display: block;
   }
   
   /* Mobile menu container */
@@ -2140,7 +2179,8 @@ textarea:-ms-input-placeholder {
     display: block !important;
     width: auto;
     position: relative;
-    padding-left: 30px;
+    padding-left: 15px;
+    margin: 0;
   }
   
   /* Hide quicklinks in mobile view and adjust spacing */
@@ -2189,30 +2229,32 @@ textarea:-ms-input-placeholder {
   
   /* Hamburger Button */
   .mobile-menu-toggle {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
+    padding: 6px;
     background: #fff;
-    border: 2px solid #1a1a1a;
-    border-radius: 5px;
+    border: none;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4px;
     cursor: pointer;
-    padding: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    margin-left: auto;
     position: relative;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   
   .mobile-menu-toggle span {
     display: block;
     width: 20px;
-    height: 3px;
+    height: 2px;
     background: #1a1a1a;
     border-radius: 1px;
     transition: all 0.3s ease;
+    margin: 2px 0;
   }
   
   /* Hamburger animation when active */
