@@ -1,7 +1,7 @@
 // Wait for the entire page to load
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu elements
-    const mobileMenuToggle = document.querySelector('.sidebar-toggle-btn');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileNavMenu = document.querySelector('.mobile-nav-menu');
     const body = document.body;
     
