@@ -42,41 +42,43 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-    CSS INDEX
-    ===================
-
-    01. Theme default CSS
-    02. Header CSS
-    2.1. Header Top CSS
-    2.2 Offcanvas Menu CSS
-    03. Hero CSS
-    04. Service CSS
-    05. About CSS
-    06. Skill CSS
-    07. Counter CSS
-    08. Case Study CSS
-    09. Features CSS
-    10. Team CSS
-    11. Testimonial CSS
-    12. Choose Us CSS
-    13. Brand CSS
-    14. CTA CSS
-    15. Video CSS
-    16. Blog CSS
-    17. Pricing CSS
-    18. Blog Standard CSS
-    19. Blog Details CSS
-    20. Contact CSS
+/*
+  CSS INDEX
+  ===================
+  01. Theme default CSS
+  02. Header CSS
+  2.1. Header Top CSS
+  2.2 Offcanvas Menu CSS
+  03. Hero CSS
+  04. Service CSS
+  05. About CSS
+  06. Skill CSS
+  07. Counter CSS
+  08. Case Study CSS
+  09. Features CSS
+  10. Team CSS
+  11. Testimonial CSS
+  12. Choose Us CSS
+  13. Brand CSS
+  14. CTA CSS
+  15. Video CSS
+  16. Blog CSS
+  17. Pricing CSS
+  18. Blog Standard CSS
+  19. Blog Details CSS
+  20. Contact CSS
+*/
+/*----------------------------------------*/
+/*  01. Theme default CSS
     21. Page Banner CSS
     22. Subscribe CSS
     23. Login Register CSS
     24. Footer CSS
     24.1. Footer Widget CSS
+  */
 
-
------------------------------------------------------------------------------------*/
-/*----------------------------------------*/
-/*  01. Theme default CSS
+  /*----------------------------------------*/
+  /*  01. Theme default CSS
 /*----------------------------------------*/
 /*-- Google Font --*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:300,400,500,700");
@@ -973,9 +975,10 @@ textarea:-ms-input-placeholder {
   margin: 0;
 }
 @media only screen and (max-width: 991px) {
-  .header-top-info {
+  .section .header-top-section .header-top-wrap .header-top-info {
     border-bottom: none !important;
     padding: 10px 15px !important;
+    background: #076415 !important;
   }
   
   .header-top-info ul {
@@ -1066,7 +1069,9 @@ textarea:-ms-input-placeholder {
   opacity: 1;
   top: 100%;
 }
-  position: absolute;{
+
+.main-menu ul li .sub-menu {
+  position: absolute;
   left: 0;
   top: 100%;
   min-width: 240px;
@@ -1139,7 +1144,7 @@ textarea:-ms-input-placeholder {
 }
 
 .header-top-section {
-  background: #1a1a1a;
+  background: #009959;
 }
 
 .header-top-wrap {
@@ -2338,6 +2343,7 @@ textarea:-ms-input-placeholder {
     padding: 8px 0;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 0;
+    background: #076415 !important;
   }
   
   .header-top-info ul {
@@ -5987,16 +5993,15 @@ textarea:-ms-input-placeholder {
     width: 100%;
     height: 100%;
     text-align: center;
-  }
-  }
-  .circle-stat .counter {
+}
+
+.circle-stat .counter {
     color: #111;
     font-size: 2rem;
     font-weight: 700;
-  }
-  margin-bottom: 10px;
-  transition: all 0.3s linear;
-  margin-top: 20px;
+    margin-bottom: 10px;
+    transition: all 0.3s linear;
+    margin-top: 20px;
 }
 .course-section-03 .single-course .content .title:hover {
   color: #ff773d;
