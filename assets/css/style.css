@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Match bottom footer color to top header color */
 .footer-copyright-area {
   background: #076415 !important;
@@ -47,6 +48,8 @@
 .edubin-category-section-03 .items-image {
   background: none !important;
 }
+=======
+>>>>>>> ff52e3181eed26aecfc47f20b88dca25b65a1ecb
 /* Mobile Menu Toggle Button Alignment */
 @media (max-width: 991px) {
     /* Hide the mobile menu by default */
@@ -353,7 +356,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 /*--Section Spacing--*/
 .section-padding {
-  padding-top: 120px;
+  padding-top: 36px;
   padding-bottom: 120px;
 }
 @media only screen and (max-width: 1199px) {
@@ -1245,7 +1248,11 @@ textarea:-ms-input-placeholder {
 }
 
 .header-top-section {
+<<<<<<< HEAD
   background: #076415 !important;  /* DWU Green */
+=======
+  background: #009959 !important;  /* DWU Green */
+>>>>>>> ff52e3181eed26aecfc47f20b88dca25b65a1ecb
   margin: 0;
   padding: 0;
 }
@@ -12666,7 +12673,7 @@ textarea:-ms-input-placeholder {
 }
 
 .footer-copyright-area {
-  background: #1a1a1a;
+  background: #009959;
   padding-top: 20px;
   padding-bottom: 30px;
 }

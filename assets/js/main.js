@@ -314,37 +314,33 @@
       },
     });
 
-    // Slide counter and pause button functionality
+    // Initialize slide counter
+    var totalSlides = document.querySelectorAll('.hero-slider-active .swiper-slide').length;
+    
+    // Create a hidden counter element if it doesn't exist
     var slideCounter = document.getElementById('slideCounter');
-    var pauseBtn = document.getElementById('pauseBtn');
-    var pauseIcon = document.getElementById('pauseIcon');
-    var isPaused = false;
-    var totalSlides = 5;
+    if (!slideCounter) {
+        slideCounter = document.createElement('div');
+        slideCounter.id = 'slideCounter';
+        slideCounter.style.display = 'none'; // Keep it hidden
+        document.body.appendChild(slideCounter);
+    }
 
+    // Initialize counter
     function updateCounter() {
-      var realIndex = heroSwiper.realIndex + 1;
-      slideCounter.textContent = realIndex + '/' + totalSlides;
+        if (!heroSwiper) return;
+        var realIndex = heroSwiper.realIndex + 1;
+        slideCounter.textContent = realIndex + '/' + totalSlides;
     }
-
-    heroSwiper.on('slideChange', function() {
-      updateCounter();
-    });
-
-    if (pauseBtn) {
-      pauseBtn.addEventListener('click', function() {
-        if (isPaused) {
-          heroSwiper.autoplay.start();
-          pauseIcon.className = 'fas fa-pause';
-          isPaused = false;
-        } else {
-          heroSwiper.autoplay.stop();
-          pauseIcon.className = 'fas fa-play';
-          isPaused = true;
-        }
-      });
+    
+    // Update counter on slide change
+    if (heroSwiper) {
+        heroSwiper.on('init', updateCounter);
+        heroSwiper.on('slideChange', updateCounter);
+        
+        // Initialize counter immediately
+        updateCounter();
     }
-
-    updateCounter();
 
 
 
