@@ -1,60 +1,3 @@
-/* Mobile Menu Toggle Button Alignment */
-@media (max-width: 991px) {
-    /* Hide the mobile menu by default */
-    .mobile-nav-menu {
-        display: none !important;
-        width: 100% !important;
-        right: 0 !important;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #fff;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        z-index: 999;
-    }
-    
-    /* Show mobile menu when active */
-    .mobile-nav-menu.active {
-        display: block !important;
-    }
-    
-    .header-meta {
-        margin-left: auto;
-        position: relative;
-        z-index: 1000;
-    }
-    
-    .side-menu-icon {
-        margin-left: auto !important;
-        margin-right: 0 !important;
-        padding-right: 15px !important;
-    }
-    
-    .info-toggle-btn {
-        position: relative;
-        right: 0 !important;
-        left: auto !important;
-        padding: 10px 0 10px 15px;
-        cursor: pointer;
-    }
-    
-    .sidebar-toggle-btn {
-        position: relative;
-        right: 0 !important;
-        left: auto !important;
-    }
-    
-    .sidebar-toggle-btn .icon {
-        right: 0;
-        left: auto;
-    }
-    
-    /* Prevent body scroll when menu is open */
-    body.mobile-menu-open {
-        overflow: hidden;
-    }
-}
-
 /* Footer social icons: dark by default, yellow on hover */
 .footer-social-icon i {
   color: #222 !important;
@@ -99,41 +42,43 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-    CSS INDEX
-    ===================
-
-    01. Theme default CSS
-    02. Header CSS
-    2.1. Header Top CSS
-    2.2 Offcanvas Menu CSS
-    03. Hero CSS
-    04. Service CSS
-    05. About CSS
-    06. Skill CSS
-    07. Counter CSS
-    08. Case Study CSS
-    09. Features CSS
-    10. Team CSS
-    11. Testimonial CSS
-    12. Choose Us CSS
-    13. Brand CSS
-    14. CTA CSS
-    15. Video CSS
-    16. Blog CSS
-    17. Pricing CSS
-    18. Blog Standard CSS
-    19. Blog Details CSS
-    20. Contact CSS
+/*
+  CSS INDEX
+  ===================
+  01. Theme default CSS
+  02. Header CSS
+  2.1. Header Top CSS
+  2.2 Offcanvas Menu CSS
+  03. Hero CSS
+  04. Service CSS
+  05. About CSS
+  06. Skill CSS
+  07. Counter CSS
+  08. Case Study CSS
+  09. Features CSS
+  10. Team CSS
+  11. Testimonial CSS
+  12. Choose Us CSS
+  13. Brand CSS
+  14. CTA CSS
+  15. Video CSS
+  16. Blog CSS
+  17. Pricing CSS
+  18. Blog Standard CSS
+  19. Blog Details CSS
+  20. Contact CSS
+*/
+/*----------------------------------------*/
+/*  01. Theme default CSS
     21. Page Banner CSS
     22. Subscribe CSS
     23. Login Register CSS
     24. Footer CSS
     24.1. Footer Widget CSS
+  */
 
-
------------------------------------------------------------------------------------*/
-/*----------------------------------------*/
-/*  01. Theme default CSS
+  /*----------------------------------------*/
+  /*  01. Theme default CSS
 /*----------------------------------------*/
 /*-- Google Font --*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:300,400,500,700");
@@ -387,26 +332,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-weight: 600;
   color: #07294d;
   position: relative;
-  padding-bottom: 12px;
-}
-.section-title .sub-title::before {
-  content: "";
-  position: absolute;
-  width: 35px;
-  height: 2px;
-  background-color: #ffc600;
-  bottom: 0;
-  left: 0;
-}
-.section-title .sub-title.white {
-  color: #ffffff;
-}
-.section-title .sub-title.white::before {
-  background-color: #ffffff;
-}
-.section-title .sub-title.color-2::before {
-  background-color: #0071dc;
-}
+  /* Removed padding-bottom to eliminate line/space under circle */
+
 
 /*--Section Title Two--*/
 .section-title2 .title {
@@ -508,8 +435,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 200px;
-  width: 200px;
+    padding: 0 0 15px;
+    border-top: none;
   margin-top: -100px;
   margin-left: -100px;
   transform: rotate(-135deg);
@@ -518,7 +445,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   left: 75px;
   top: 75px;
   width: 50px;
-  height: 50px;
+    padding: 0px 0px 15px;
 }
 #loading #object_two {
   left: 65px;
@@ -1048,9 +975,10 @@ textarea:-ms-input-placeholder {
   margin: 0;
 }
 @media only screen and (max-width: 991px) {
-  .header-top-info {
+  .section .header-top-section .header-top-wrap .header-top-info {
     border-bottom: none !important;
     padding: 10px 15px !important;
+    background: #076415 !important;
   }
   
   .header-top-info ul {
@@ -1141,10 +1069,11 @@ textarea:-ms-input-placeholder {
   opacity: 1;
   top: 100%;
 }
+
 .main-menu ul li .sub-menu {
   position: absolute;
   left: 0;
-  top: 110%;
+  top: 100%;
   min-width: 240px;
   background-color: #ffffff;
   opacity: 0;
@@ -1215,9 +1144,7 @@ textarea:-ms-input-placeholder {
 }
 
 .header-top-section {
-  background: #009959 !important;  /* DWU Green */
-  margin: 0;
-  padding: 0;
+  background: #009959;
 }
 
 .header-top-wrap {
@@ -1698,7 +1625,7 @@ textarea:-ms-input-placeholder {
   color: #ff773d;
 }
 .header-section-02 .header-bottom-section .main-menu ul li .sub-menu {
-  border-top: 4px solid #ff773d;
+  border-top: none;
 }
 .header-section-02 .header-bottom-section .main-menu ul li .sub-menu li.active > a {
   color: #ff773d;
@@ -2416,6 +2343,7 @@ textarea:-ms-input-placeholder {
     padding: 8px 0;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 0;
+    background: #076415 !important;
   }
   
   .header-top-info ul {
@@ -4721,17 +4649,9 @@ textarea:-ms-input-placeholder {
   position: relative;
 }
 .category-2-items .single-items .items-image::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(7, 41, 77, 0.4);
-  border-radius: 5px;
+  content: none;
 }
 .category-2-items .single-items .items-image img {
-  width: 100%;
   border-radius: 5px;
 }
 .category-2-items .single-items .items-cont {
@@ -4847,7 +4767,7 @@ textarea:-ms-input-placeholder {
   height: 45px;
   line-height: 45px;
   border-radius: 3px;
-  background: #07294D;
+  background: #000302;
   color: #ffffff;
 }
 .category-form .main-form .single-form .btn:hover {
@@ -6042,18 +5962,46 @@ textarea:-ms-input-placeholder {
   background: rgba(142, 86, 255, 0.15);
   color: #8e56ff;
 }
-.course-section-03 .single-course .content .course-categories .tag.color-4 {
-  background: rgba(23, 184, 193, 0.15);
-  color: #17b8c1;
+  .circle-stat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    background: none;
+    color: #111;
+    border-radius: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: none;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 1;
+    padding: 0;
+    position: static;
+    overflow: visible;
+  }
+  .circle-stat .counter {
+    color: #111;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
-.course-section-03 .single-course .content .title {
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 28px;
-  color: #021E40;
-  margin-bottom: 10px;
-  transition: all 0.3s linear;
-  margin-top: 20px;
+
+.circle-stat .counter {
+    color: #111;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    transition: all 0.3s linear;
+    margin-top: 20px;
 }
 .course-section-03 .single-course .content .title:hover {
   color: #ff773d;
