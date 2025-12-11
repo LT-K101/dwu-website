@@ -440,34 +440,62 @@
                                                         <style>
                                                             .faculty-container {
                                                                 display: flex;
-                                                                flex-direction: column;
-                                                                gap: 15px;
+                                                                flex-wrap: wrap;
+                                                                gap: 20px;
+                                                                width: 100%;
+                                                            }
+                                                            .faculty-item {
+                                                                flex: 1;
+                                                                min-width: 200px;
+                                                                margin-bottom: 20px;
                                                             }
                                                             .faculty-header {
-                                                                padding: 12px 15px;
+                                                                padding: 10px 8px;
                                                                 background-color: #f8f9fa;
                                                                 border-radius: 4px;
                                                                 cursor: pointer;
                                                                 color: #002147;
                                                                 font-weight: 600;
-                                                                border-left: 4px solid #d32f2f;
-                                                                transition: all 0.3s ease;
+                                                                font-size: 11px;
+                                                                line-height: 1.2;
+                                                                margin-bottom: 4px;
+                                                                border-left: 2px solid #d32f2f;
+                                                                transition: all 0.2s ease;
+                                                                white-space: normal;
+                                                                height: 44px;
+                                                                display: flex;
+                                                                align-items: center;
+                                                                justify-content: center;
+                                                                text-align: center;
+                                                                word-break: break-word;
+                                                                overflow: hidden;
                                                             }
                                                             .faculty-header:hover {
                                                                 background-color: #e9ecef;
                                                             }
                                                             .programs-list {
-                                                                max-height: 0;
-                                                                overflow: hidden;
-                                                                transition: max-height 0.3s ease-out;
-                                                                padding-left: 20px;
+                                                                display: none;
+                                                                grid-template-columns: 1fr 1fr;
+                                                                gap: 6px;
+                                                                margin-top: 12px;
+                                                                padding-top: 8px;
+                                                                border-top: 1px solid #f0f0f0;
                                                             }
                                                             .faculty-item:hover .programs-list {
-                                                                max-height: 500px; /* Adjust based on content */
+                                                                display: grid;
                                                             }
                                                             .program-item {
-                                                                padding: 8px 0;
-                                                                border-bottom: 1px solid #eee;
+                                                                padding: 4px 8px;
+                                                                border-bottom: 1px solid #f0f0f0;
+                                                                font-size: 11px;
+                                                                line-height: 1.3;
+                                                                background-color: #fafafa;
+                                                                border-radius: 2px;
+                                                                transition: all 0.2s ease;
+                                                            }
+                                                            .program-item:hover {
+                                                                background-color: #f0f0f0;
+                                                                padding: 4px 10px;
                                                             }
                                                             .program-item:last-child {
                                                                 border-bottom: none;
@@ -476,7 +504,14 @@
                                                                 color: #333;
                                                                 text-decoration: none;
                                                                 display: block;
-                                                                transition: color 0.2s;
+                                                                transition: all 0.2s ease;
+                                                                padding: 4px 6px;
+                                                                border-radius: 3px;
+                                                            }
+                                                            .program-link:hover {
+                                                                background-color: #f0f0f0;
+                                                                color: #d32f2f;
+                                                                padding-left: 8px;
                                                             }
                                                             .program-link:hover {
                                                                 color: #d32f2f;
@@ -484,11 +519,11 @@
                                                             }
                                                         </style>
                                                         
-                                                        <div class="faculty-container">
+                                                        <div class="faculty-container" style="display: flex; flex-wrap: wrap; gap: 20px; width: 100%;">
                                                             <!-- Faculty of Arts & Sciences -->
                                                             <div class="faculty-item">
                                                                 <div class="faculty-header">Faculty Of Arts & Sciences</div>
-                                                                <div class="programs-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                                <div class="programs-list">
                                                                     <div class="program-item">
                                                                         <a href="#" class="program-link">• Bachelor of Arts (Major in Social Work/ Religious Studies)</a>
                                                                     </div>
