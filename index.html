@@ -443,11 +443,13 @@
                                                                 flex-wrap: wrap;
                                                                 gap: 20px;
                                                                 width: 100%;
+                                                                position: relative;
                                                             }
                                                             .faculty-item {
                                                                 flex: 1;
                                                                 min-width: 200px;
                                                                 margin-bottom: 20px;
+                                                                position: static;
                                                             }
                                                             .faculty-header {
                                                                 padding: 10px 8px;
@@ -475,14 +477,25 @@
                                                             }
                                                             .programs-list {
                                                                 display: none;
+                                                                position: absolute;
+                                                                top: 100%;
+                                                                left: 0;
+                                                                right: 0;
                                                                 grid-template-columns: 1fr 1fr;
                                                                 gap: 6px;
-                                                                margin-top: 12px;
-                                                                padding-top: 8px;
-                                                                border-top: 1px solid #f0f0f0;
+                                                                margin-top: 0;
+                                                                padding: 15px;
+                                                                background: white;
+                                                                border: 1px solid #f0f0f0;
+                                                                border-radius: 4px;
+                                                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                                                z-index: 1000;
                                                             }
                                                             .faculty-item:hover .programs-list {
                                                                 display: grid;
+                                                                position: absolute;
+                                                                left: 0;
+                                                                right: 0;
                                                             }
                                                             .program-item {
                                                                 padding: 4px 8px;
@@ -562,13 +575,40 @@
                                                                 <div class="faculty-header">Faculty Of Business & Informatics</div>
                                                                 <div class="programs-list">
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Business Administration</a>
+                                                                        <a href="#" class="program-link">• Bachelor of Business (Accountancy) (BBA)</a>
                                                                     </div>
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Accounting</a>
+                                                                        <a href="#" class="program-link">• Bachelor of Business-Management (BBM)</a>
                                                                     </div>
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Information Systems</a>
+                                                                        <a href="#" class="program-link">• Bachelor of Information System (BIS)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Graduate Certificate in Data Networking</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Mathematics and Computing Science (BMCS)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Tourism and Hospitality Management (BTHM)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Management</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Diploma in Business Studies</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Diploma in Human Resource Management</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Diploma in Management</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Master of Business Administration</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Master of Leadership in Business Administration</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -578,13 +618,22 @@
                                                                 <div class="faculty-header">Faculty Of Education</div>
                                                                 <div class="programs-list">
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Education (Primary)</a>
+                                                                        <a href="#" class="program-link">• Department of Science</a>
                                                                     </div>
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Education (Secondary)</a>
+                                                                        <a href="#" class="program-link">• Department of Humanities</a>
                                                                     </div>
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Early Childhood Education</a>
+                                                                        <a href="#" class="program-link">• Department of Education and Professional Studies/a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Education (Primary, Inservice)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Doctor of Education</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Master of Educational Leadership</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -594,13 +643,31 @@
                                                                 <div class="faculty-header">Faculty Of Medical & Health Sciences</div>
                                                                 <div class="programs-list">
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Medicine and Surgery (MBBS)</a>
+                                                                        <a href="#" class="program-link">• Bachelor of Environmental Health (BEH)</a>
                                                                     </div>
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Nursing</a>
+                                                                        <a href="#" class="program-link">• Bachelor of Health Science (Rural Health, Inservice)</a>
                                                                     </div>
                                                                     <div class="program-item">
-                                                                        <a href="#" class="program-link">• Bachelor of Public Health</a>
+                                                                        <a href="#" class="program-link">• Bachelor of Health Sciences (Rural Health)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Health Management (BHM)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Physiotherapy</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Master of Public Health – Health Services Management</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Medicine and Bachelor of Surgery (MBBS)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Midwifery (BMid)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Diploma in General Nursing (DGN)</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
