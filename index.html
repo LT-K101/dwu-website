@@ -341,52 +341,342 @@
 
                                     <!------- Start of Study at DWU ------->
                                     <li class="cour-menu">
-                                    <a href="study/undergraduate.html" class="mm-arr">Study at DWU</a>
-                                    <!-- MEGA MENU FOR STUDY AT DWU -->
+                                        <a href="#" class="mm-arr">Study at DWU</a>
+                                        <!-- MEGA MENU FOR STUDY AT DWU -->
                                     <div class="mm-pos">
                                         <div class="cour-mm m-menu">
-                                            <div class="m-menu-inn">
-                                                <div class="mm1-com mm1-cour-com mm1-s3">
-													<h4><a href="study/undergraduate.html">Undergraduate</a></h4>
-                                                    <ul>
-                                                        <li><a href="study/undergraduate.html#arts">Faculty Of Arts & Social Sciences</a></li>
-														<li><a href="study/undergraduate.html#business">Faculty Of Business & Informatics</a></li>
-														<li><a href="study/undergraduate.html#education">Faculty Of Education</a></li>
-														<li><a href="study/undergraduate.html#health">Faculty Of Health Sciences</a></li>
-                                                    </ul>
+                                            <div class="m-menu-inn" style="display: flex;">
+                                                <!-- Left side navigation -->
+                                                <div class="study-nav" style="width: 200px; padding: 15px 0; border-right: 1px solid #eee; display: flex; flex-direction: column;">
+                                                    <div style="padding: 12px 20px; cursor: pointer; border-left: 3px solid transparent;" 
+                                                         onclick="showStudyContent('undergraduate')" 
+                                                         onmouseover="this.style.backgroundColor='#f8f9fa'" 
+                                                         onmouseout="if(!this.classList.contains('active')) this.style.backgroundColor='transparent'">
+                                                        <a href="study/undergraduate.html" style="font-weight: 600; color: #002147; text-decoration: none; display: block;">Undergraduate</a>
+                                                    </div>
+                                                    <div style="padding: 12px 20px; cursor: pointer; border-left: 3px solid transparent;" 
+                                                         onclick="showStudyContent('postgraduate')"
+                                                         onmouseover="this.style.backgroundColor='#f8f9fa'; showStudyContent('postgraduate');" 
+                                                         onmouseout="if(!this.classList.contains('active')) this.style.backgroundColor='transparent'">
+                                                        <a href="#" style="font-weight: 600; color: #002147; text-decoration: none; display: block;">Postgraduate</a>
+                                                    </div>
+                                                    <div style="padding: 12px 20px; cursor: pointer; border-left: 3px solid transparent;" 
+                                                         onclick="showStudyContent('international')"
+                                                         onmouseover="this.style.backgroundColor='#f8f9fa'" 
+                                                         onmouseout="if(!this.classList.contains('active')) this.style.backgroundColor='transparent'">
+                                                        <a href="study/international-students.html" style="font-weight: 600; color: #002147; text-decoration: none; display: block;">International Students</a>
+                                                    </div>
+                                                    <div style="padding: 12px 20px; cursor: pointer; border-left: 3px solid transparent;" 
+                                                         onclick="showStudyContent('short-courses')"
+                                                         onmouseover="this.style.backgroundColor='#f8f9fa'" 
+                                                         onmouseout="if(!this.classList.contains('active')) this.style.backgroundColor='transparent'">
+                                                        <a href="study/short-courses.html" style="font-weight: 600; color: #002147; text-decoration: none; display: block;">Short Courses</a>
+                                                    </div>
                                                 </div>
-                                                <div class="mm1-com mm1-cour-com mm1-s3">
-													<h4><a href="study/graduate.html">Postgraduate</a></h4>
-                                                    <ul>
-														<li><a href="study/graduate.html#arts">Faculty Of Arts & Social Sciences</a></li>
-														<li><a href="study/graduate.html#business">Faculty Of Business & Informatics</a></li>
-														<li><a href="study/graduate.html#education">Faculty Of Education</a></li>
-														<li><a href="study/graduate.html#health">Faculty Of Health Sciences</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="mm1-com mm1-cour-com mm1-s3">
-													<h4><a href="study/international-students.html">International Students</a></h4>
-                                                    <ul>
-														<li><a href="study/international-students.html#admissions">Admissions</a></li>
-														<li><a href="study/international-students.html#visa">Visa Information</a></li>
-														<li><a href="study/international-students.html#accommodation">Accommodation</a></li>
-														<li><a href="study/international-students.html#support">Student Support</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="mm1-com mm1-cour-com mm1-s4">
-													<h4><a href="study/short-courses.html">Short Courses</a></h4>
-                                                    <ul>
-														<li><a href="study/short-courses.html#professional">Professional Development</a></li>
-														<li><a href="study/short-courses.html#language">Language Courses</a></li>
-														<li><a href="study/short-courses.html#certification">Certification Programs</a></li>
-														<li><a href="study/short-courses.html#workshops">Workshops</a></li>
-                                                    </ul>
+                                                
+                                                <!-- Right side content -->
+                                                <div class="study-content" style="flex: 1; padding: 15px 20px; min-height: 100%;">
+                                                    <!-- Undergraduate Content -->
+                                                    <div id="undergraduate-content" class="study-content-section" style="display: none;">
+                                                        <style>
+                                                            .faculty-container {
+                                                                display: flex;
+                                                                flex-direction: column;
+                                                                gap: 15px;
+                                                            }
+                                                            .faculty-header {
+                                                                padding: 12px 15px;
+                                                                background-color: #f8f9fa;
+                                                                border-radius: 4px;
+                                                                cursor: pointer;
+                                                                color: #002147;
+                                                                font-weight: 600;
+                                                                border-left: 4px solid #d32f2f;
+                                                                transition: all 0.3s ease;
+                                                            }
+                                                            .faculty-header:hover {
+                                                                background-color: #e9ecef;
+                                                            }
+                                                            .programs-list {
+                                                                max-height: 0;
+                                                                overflow: hidden;
+                                                                transition: max-height 0.3s ease-out;
+                                                                padding-left: 20px;
+                                                            }
+                                                            .faculty-item:hover .programs-list {
+                                                                max-height: 500px; /* Adjust based on content */
+                                                            }
+                                                            .program-item {
+                                                                padding: 8px 0;
+                                                                border-bottom: 1px solid #eee;
+                                                            }
+                                                            .program-item:last-child {
+                                                                border-bottom: none;
+                                                            }
+                                                            .program-link {
+                                                                color: #333;
+                                                                text-decoration: none;
+                                                                display: block;
+                                                                transition: color 0.2s;
+                                                            }
+                                                            .program-link:hover {
+                                                                color: #d32f2f;
+                                                                padding-left: 5px;
+                                                            }
+                                                        </style>
+                                                        
+                                                        <div class="faculty-container">
+                                                            <!-- Faculty of Arts & Sciences -->
+                                                            <div class="faculty-item">
+                                                                <div class="faculty-header">Faculty Of Arts & Sciences</div>
+                                                                <div class="programs-list">
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Arts in Communication Arts</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Science in Environmental Science</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Arts in International Relations</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <!-- Faculty of Business & Informatics -->
+                                                            <div class="faculty-item">
+                                                                <div class="faculty-header">Faculty Of Business & Informatics</div>
+                                                                <div class="programs-list">
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Business Administration</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Accounting</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Information Systems</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <!-- Faculty of Education -->
+                                                            <div class="faculty-item">
+                                                                <div class="faculty-header">Faculty Of Education</div>
+                                                                <div class="programs-list">
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Education (Primary)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Education (Secondary)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Early Childhood Education</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <!-- Faculty of Medical & Health Sciences -->
+                                                            <div class="faculty-item">
+                                                                <div class="faculty-header">Faculty Of Medical & Health Sciences</div>
+                                                                <div class="programs-list">
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Medicine and Surgery (MBBS)</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Nursing</a>
+                                                                    </div>
+                                                                    <div class="program-item">
+                                                                        <a href="#" class="program-link">• Bachelor of Public Health</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <style>
+                                                            .program-link {
+                                                                flex: 1 1 0%;
+                                                                min-width: 0;
+                                                                padding: 10px !important;
+                                                                margin: 0 !important;
+                                                                color: #002147;
+                                                                text-decoration: none;
+                                                                font-size: 12.5px !important;
+                                                                line-height: 1.3 !important;
+                                                                box-sizing: border-box !important;
+                                                                transition: all 0.1s ease;
+                                                                white-space: nowrap;
+                                                                overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                border: none !important;
+                                                            }
+                                                            .program-link:hover {
+                                                                background-color: #f5f5f5;
+                                                                padding-left: 15px;
+                                                            }
+                                                        </style>
+                                                    </div>
+                                                    
+                                                    <!-- Postgraduate Content -->
+                                                    <div id="postgraduate-content" class="study-content-section" style="display: none;">
+                                                        <div style="display: flex; flex-direction: column;">
+                                                            <a href="study/postgraduate.html#mba" style="display: block; padding: 10px 15px; color: #002147; text-decoration: none; border-radius: 4px; margin-bottom: 5px; transition: all 0.2s ease;" 
+                                                               onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.paddingLeft='20px';" 
+                                                               onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='15px';">
+                                                                <strong>Master of Business Administration (MBA)</strong>
+                                                                <div style="font-size: 0.9em; color: #666;">Leadership, Strategic Management, and Business Analytics</div>
+                                                            </a>
+                                                            <a href="study/postgraduate.html#med" style="display: block; padding: 10px 15px; color: #002147; text-decoration: none; border-radius: 4px; margin-bottom: 5px; transition: all 0.2s ease;"
+                                                               onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.paddingLeft='20px';" 
+                                                               onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='15px';">
+                                                                <strong>Master of Education</strong>
+                                                                <div style="font-size: 0.9em; color: #666;">Educational Leadership, Curriculum Development, and Research</div>
+                                                            </a>
+                                                            <a href="study/postgraduate.html#mph" style="display: block; padding: 10px 15px; color: #002147; text-decoration: none; border-radius: 4px; margin-bottom: 5px; transition: all 0.2s ease;"
+                                                               onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.paddingLeft='20px';" 
+                                                               onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='15px';">
+                                                                <strong>Master of Public Health</strong>
+                                                                <div style="font-size: 0.9em; color: #666;">Epidemiology, Health Policy, and Global Health</div>
+                                                            </a>
+                                                            <a href="study/postgraduate.html#mit" style="display: block; padding: 10px 15px; color: #002147; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;"
+                                                               onmouseover="this.style.backgroundColor='#f5f5f5'; this.style.paddingLeft='20px';" 
+                                                               onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='15px';">
+                                                                <strong>Master of Information Technology</strong>
+                                                                <div style="font-size: 0.9em; color: #666;">Cybersecurity, Data Science, and Software Engineering</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- International Students Content -->
+                                                    <div id="international-content" class="study-content-section" style="display: none;">
+                                                        <h4 style="margin-top: 0; color: #002147;">International Students</h4>
+                                                        <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2; list-style: none; padding: 0; margin: 0;">
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Admissions</a></li>
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Visa Information</a></li>
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Accommodation</a></li>
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Student Support</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <!-- Short Courses Content -->
+                                                    <div id="short-courses-content" class="study-content-section" style="display: none;">
+                                                        <h4 style="margin-top: 0; color: #002147;">Short Courses</h4>
+                                                        <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2; list-style: none; padding: 0; margin: 0;">
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Professional Development</a></li>
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Language Courses</a></li>
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Certification Programs</a></li>
+                                                            <li style="margin-bottom: 8px;"><a href="#" style="color: #555; text-decoration: none;">Workshops</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <!------- End of Study at DWU --------->
+                                    
+                                    <script>
+                                    function showStudyContent(section) {
+                                        // Only proceed if we have a valid section
+                                        if (!section) {
+                                            // If no section is specified, hide all content
+                                            document.querySelectorAll('.study-content-section').forEach(function(el) {
+                                                el.style.display = 'none';
+                                            });
+                                            return;
+                                        }
+                                        
+                                        // Hide all content sections
+                                        document.querySelectorAll('.study-content-section').forEach(function(el) {
+                                            el.style.display = 'none';
+                                        });
+                                        
+                                        // Show the selected content section if it exists
+                                        const contentSection = document.getElementById(section + '-content');
+                                        if (contentSection) {
+                                            contentSection.style.display = 'block';
+                                        }
+                                        
+                                        // Update active state in navigation
+                                        document.querySelectorAll('.study-nav > div').forEach(function(div) {
+                                            div.style.backgroundColor = 'transparent';
+                                            div.style.borderLeftColor = 'transparent';
+                                            if (div.querySelector('a')) {
+                                                div.querySelector('a').style.color = '#002147';
+                                            }
+                                            div.classList.remove('active');
+                                        });
+                                        
+                                        // Highlight the active navigation item if it exists
+                                        var activeNavItem = document.querySelector('.study-nav > div[onclick*="' + section + '"]');
+                                        if (activeNavItem) {
+                                            activeNavItem.style.backgroundColor = '#f8f9fa';
+                                            activeNavItem.style.borderLeftColor = '#002147';
+                                            if (activeNavItem.querySelector('a')) {
+                                                activeNavItem.querySelector('a').style.color = '#002147';
+                                            }
+                                            activeNavItem.classList.add('active');
+                                        }
+                                    }
+                                    
+                                    // Initialize with no content shown by default
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        // Hide all content sections initially
+                                        document.querySelectorAll('.study-content-section').forEach(function(el) {
+                                            el.style.display = 'none';
+                                        });
+                                        
+                                        // Function to set up hover behavior for menu items
+                                        function setupMenuItemHover(selector, contentId) {
+                                            const menuItem = document.querySelector(selector);
+                                            if (menuItem) {
+                                                menuItem.addEventListener('mouseenter', function() {
+                                                    showStudyContent(contentId);
+                                                });
+                                                
+                                                // Add click handler as fallback
+                                                menuItem.addEventListener('click', function(e) {
+                                                    e.preventDefault();
+                                                    showStudyContent(contentId);
+                                                });
+                                            }
+                                        }
+                                        
+                                        // Set up hover for undergraduate item
+                                        setupMenuItemHover('.study-nav > div[onclick*="undergraduate"]', 'undergraduate');
+                                        
+                                        // Set up hover for postgraduate item
+                                        setupMenuItemHover('.study-nav > div[onclick*="postgraduate"]', 'postgraduate');
+                                        
+                                        // Add mouseleave to hide content when leaving the menu
+                                        const menuContainer = document.querySelector('.cour-menu');
+                                        if (menuContainer) {
+                                            menuContainer.addEventListener('mouseleave', function() {
+                                                showStudyContent();
+                                            });
+                                        }
+                                        
+                                        // Prevent hiding when moving to content area
+                                        const contentArea = document.querySelector('.study-content');
+                                        if (contentArea) {
+                                            contentArea.addEventListener('mouseenter', function() {
+                                                clearTimeout(window.hideContentTimer);
+                                            });
+                                            
+                                            contentArea.addEventListener('mouseleave', function() {
+                                                window.hideContentTimer = setTimeout(() => {
+                                                    showStudyContent();
+                                                }, 300);
+                                            });
+                                        }
+                                        
+                                        // Add event listener to show content when clicking on undergraduate
+                                        document.addEventListener('click', function(e) {
+                                            const undergradLink = e.target.closest('.study-nav > div[onclick*="undergraduate"]');
+                                            if (undergradLink) {
+                                                e.preventDefault();
+                                                showStudyContent('undergraduate');
+                                            }
+                                        });
+                                    });
+                                    </script>
+                                    </li>
+                                    <!------- End of Study at DWU --------->
 
                                             <!---- Start of Research Menu ---->
                                 <li class="rese-menu">
