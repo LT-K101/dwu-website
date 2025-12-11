@@ -100,6 +100,65 @@
             overflow: hidden !important;
         }
         
+        /* Left-aligned slider pagination in mobile view */
+        @media (max-width: 767px) {
+            .slider-controls {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 8px 15px;
+                flex-wrap: nowrap;
+                gap: 5px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .swiper-pagination {
+                position: relative !important;
+                display: flex;
+                justify-content: flex-start;
+                margin: 0 10px 0 0 !important;
+                transform: none !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: auto !important;
+                order: 1;
+                flex: 1 1 auto;
+                overflow: hidden;
+            }
+            
+            .swiper-pagination-bullet {
+                width: 6px !important;
+                height: 6px !important;
+                margin: 0 3px !important;
+                opacity: 0.6;
+            }
+            
+            .swiper-pagination-bullet-active {
+                opacity: 1;
+                background: #ffc600 !important;
+            }
+            
+            .slide-counter {
+                font-size: 12px;
+                margin: 0 5px;
+                order: 1;
+                flex: 0 0 auto;
+            }
+            
+            .pause-btn {
+                order: 3;
+                flex: 0 0 auto;
+                background: none;
+                border: none;
+                padding: 5px;
+                margin: 0;
+                font-size: 14px;
+                color: #fff;
+            }
+        }
+        
         .edubin-slider-section-03 > .container,
         .edubin-slider-section-03 > .container-fluid {
             padding-left: 0 !important;
