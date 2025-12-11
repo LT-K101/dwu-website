@@ -340,6 +340,26 @@
         
         // Initialize counter immediately
         updateCounter();
+        
+        // Add play/pause functionality
+        const pauseBtn = document.getElementById('pauseBtn');
+        const pauseIcon = document.getElementById('pauseIcon');
+        let isPlaying = true;
+
+        if (pauseBtn) {
+            pauseBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    heroSwiper.autoplay.stop();
+                    pauseIcon.classList.remove('fa-pause');
+                    pauseIcon.classList.add('fa-play');
+                } else {
+                    heroSwiper.autoplay.start();
+                    pauseIcon.classList.remove('fa-play');
+                    pauseIcon.classList.add('fa-pause');
+                }
+                isPlaying = !isPlaying;
+            });
+        }
     }
 
 
