@@ -781,108 +781,115 @@
                                     </div>
                                     
                                     <script>
+                                    // Function to show the selected content section
                                     function showStudyContent(section) {
-                                        // Only proceed if we have a valid section
-                                        if (!section) {
-                                            // If no section is specified, hide all content
-                                            document.querySelectorAll('.study-content-section').forEach(function(el) {
-                                                el.style.display = 'none';
-                                            });
-                                            return;
+                                        // Clear any pending hide timers
+                                        if (window.hideContentTimer) {
+                                            clearTimeout(window.hideContentTimer);
+                                            window.hideContentTimer = null;
                                         }
-                                        
+
                                         // Hide all content sections
                                         document.querySelectorAll('.study-content-section').forEach(function(el) {
                                             el.style.display = 'none';
                                         });
-                                        
-                                        // Show the selected content section if it exists
-                                        const contentSection = document.getElementById(section + '-content');
-                                        if (contentSection) {
-                                            contentSection.style.display = 'block';
-                                        }
-                                        
-                                        // Update active state in navigation
-                                        document.querySelectorAll('.study-nav > div').forEach(function(div) {
-                                            div.style.backgroundColor = 'transparent';
-                                            div.style.borderLeftColor = 'transparent';
-                                            if (div.querySelector('a')) {
-                                                div.querySelector('a').style.color = '#002147';
-                                            }
-                                            div.classList.remove('active');
+
+                                        // Remove active class from all menu items
+                                        document.querySelectorAll('.study-nav > div').forEach(function(el) {
+                                            el.classList.remove('active');
+                                            el.style.backgroundColor = 'transparent';
+                                            el.style.borderLeftColor = 'transparent';
                                         });
-                                        
-                                        // Highlight the active navigation item if it exists
-                                        var activeNavItem = document.querySelector('.study-nav > div[onclick*="' + section + '"]');
-                                        if (activeNavItem) {
-                                            activeNavItem.style.backgroundColor = '#f8f9fa';
-                                            activeNavItem.style.borderLeftColor = '#002147';
-                                            if (activeNavItem.querySelector('a')) {
-                                                activeNavItem.querySelector('a').style.color = '#002147';
+
+                                        // If a section is specified, show it
+                                        if (section) {
+                                            // Add '-content' to match the actual ID in the HTML
+                                            const contentId = section + '-content';
+                                            const contentSection = document.getElementById(contentId);
+                                            const menuItem = document.querySelector(`.study-nav > div[onclick*="${section}"]`);
+                                            
+                                            if (contentSection) {
+                                                contentSection.style.display = 'block';
                                             }
-                                            activeNavItem.classList.add('active');
+                                            if (menuItem) {
+                                                menuItem.classList.add('active');
+                                                menuItem.style.backgroundColor = '#f8f9fa';
+                                                menuItem.style.borderLeftColor = '#002147';
+                                            }
                                         }
                                     }
-                                    
-                                    // Initialize with no content shown by default
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        // Hide all content sections initially
-                                        document.querySelectorAll('.study-content-section').forEach(function(el) {
-                                            el.style.display = 'none';
-                                        });
-                                        
-                                        // Function to set up hover behavior for menu items
-                                        function setupMenuItemHover(selector, contentId) {
-                                            const menuItem = document.querySelector(selector);
-                                            if (menuItem) {
-                                                menuItem.addEventListener('mouseenter', function() {
-                                                    showStudyContent(contentId);
-                                                });
-                                                
-                                                // Add click handler as fallback
-                                                menuItem.addEventListener('click', function(e) {
-                                                    e.preventDefault();
-                                                    showStudyContent(contentId);
-                                                });
-                                            }
-                                        }
-                                        
-                                        // Set up hover for undergraduate item
-                                        setupMenuItemHover('.study-nav > div[onclick*="undergraduate"]', 'undergraduate');
-                                        
-                                        // Set up hover for postgraduate item
-                                        setupMenuItemHover('.study-nav > div[onclick*="postgraduate"]', 'postgraduate');
-                                        
-                                        // Add mouseleave to hide content when leaving the menu
-                                        const menuContainer = document.querySelector('.cour-menu');
-                                        if (menuContainer) {
-                                            menuContainer.addEventListener('mouseleave', function() {
-                                                showStudyContent();
+
+                                    // Function to set up hover behavior for menu items
+                                    function setupMenuItemHover(selector, contentId) {
+                                        const menuItem = document.querySelector(selector);
+                                        if (menuItem) {
+                                            menuItem.addEventListener('mouseenter', function() {
+                                                showStudyContent(contentId);
+                                            });
+                                            
+                                            // Add click handler as fallback
+                                            menuItem.addEventListener('click', function(e) {
+                                                e.preventDefault();
+                                                showStudyContent(contentId);
+                                                return false;
                                             });
                                         }
+                                    }
+
+                                    // Initialize the page
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        // Set up hover for all menu items
+                                        setupMenuItemHover('.study-nav > div[onclick*="undergraduate"]', 'undergraduate');
+                                        setupMenuItemHover('.study-nav > div[onclick*="postgraduate"]', 'postgraduate');
+                                        setupMenuItemHover('.study-nav > div[onclick*="international"]', 'international');
+                                        setupMenuItemHover('.study-nav > div[onclick*="short-courses"]', 'short-courses');
+
+                                        // Get the menu container
+                                        const menuContainer = document.querySelector('.cour-menu .m-menu-inn');
                                         
-                                        // Prevent hiding when moving to content area
+                                        // Add mouseenter to the menu container to cancel any pending hide
+                                        if (menuContainer) {
+                                            menuContainer.addEventListener('mouseenter', function() {
+                                                if (window.hideContentTimer) {
+                                                    clearTimeout(window.hideContentTimer);
+                                                    window.hideContentTimer = null;
+                                                }
+                                            });
+
+                                            // Add mouseleave to hide content when leaving the menu
+                                            menuContainer.addEventListener('mouseleave', function() {
+                                                window.hideContentTimer = setTimeout(() => {
+                                                    showStudyContent();
+                                                }, 300);
+                                            });
+                                        }
+
+                                        // Add mouseenter to the content area to prevent hiding when moving to content
                                         const contentArea = document.querySelector('.study-content');
                                         if (contentArea) {
                                             contentArea.addEventListener('mouseenter', function() {
-                                                clearTimeout(window.hideContentTimer);
+                                                if (window.hideContentTimer) {
+                                                    clearTimeout(window.hideContentTimer);
+                                                    window.hideContentTimer = null;
+                                                }
                                             });
-                                            
+
                                             contentArea.addEventListener('mouseleave', function() {
                                                 window.hideContentTimer = setTimeout(() => {
                                                     showStudyContent();
                                                 }, 300);
                                             });
                                         }
-                                        
-                                        // Add event listener to show content when clicking on undergraduate
-                                        document.addEventListener('click', function(e) {
-                                            const undergradLink = e.target.closest('.study-nav > div[onclick*="undergraduate"]');
-                                            if (undergradLink) {
-                                                e.preventDefault();
-                                                showStudyContent('undergraduate');
+
+                                        // Show undergraduate content by default if no hash
+                                        if (!window.location.hash) {
+                                            showStudyContent('undergraduate');
+                                        } else {
+                                            const section = window.location.hash.substring(1);
+                                            if (section) {
+                                                showStudyContent(section);
                                             }
-                                        });
+                                        }
                                     });
                                     </script>
                                     </li>
