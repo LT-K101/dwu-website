@@ -453,9 +453,17 @@
                                                                     flex: 1 1 200px; /* Allow items to grow and shrink, with a base width of 200px */
                                                                     margin-bottom: 20px;
                                                                     position: relative; /* Changed from static to relative */
-                                                                    z-index: 10; /* Increased z-index */
-                                                                    display: flex;
-                                                                    flex-direction: column;
+                                                                    min-width: 200px; /* Minimum width for better touch targets */
+                                                                    z-index: 2; /* Ensure faculty items are above other content */
+                                                                    padding: 5px 10px; /* Add some padding for better hover area */
+                                                                    border-radius: 4px; /* Match the style */
+                                                                    transition: background-color 0.2s ease; /* Smooth transition */
+                                                                    background-color: #f8f9fa;
+                                                                    border-radius: 4px;
+                                                                    cursor: pointer;
+                                                                    color: #002147;
+                                                                    font-weight: 600;
+                                                                    font-size: 13px;
                                                                 }
                                                                 .faculty-header {
                                                                     padding: 12px 8px;
@@ -521,8 +529,15 @@
                                                                 
                                                                 .faculty-item:hover .programs-list,
                                                                 .programs-list:hover,
-                                                                .faculty-item:focus-within .programs-list {
+                                                                .faculty-item:focus-within .programs-list,
+                                                                .faculty-item.active .programs-list {
                                                                     display: grid;
+                                                                    opacity: 1;
+                                                                    visibility: visible;
+                                                                }
+                                                                
+                                                                .programs-list {
+                                                                    transition: opacity 0.2s ease, visibility 0.2s ease;
                                                                 }
                                                                 .program-item {
                                                                     padding: 4px 8px;
@@ -805,10 +820,116 @@
                                                 navEl.style.borderLeft = '3px solid #f5a623';
                                             }
                                         }
-                                        
-                                        // Initialize first tab as active
+
+                                        // Add hover functionality after DOM is loaded
                                         document.addEventListener('DOMContentLoaded', function() {
-                                            showStudyContent('undergraduate');
+                                            // Add hover event for undergraduate menu item
+                                            const undergradItem = document.querySelector('[onclick*="undergraduate"]');
+                                            if (undergradItem) {
+                                                undergradItem.addEventListener('mouseenter', function() {
+                                                    showStudyContent('undergraduate');
+                                                });
+                                            }
+
+                                            // Add hover event for postgraduate menu item
+                                            const postgradItem = document.querySelector('[onclick*="postgraduate"]');
+                                            if (postgradItem) {
+                                                postgradItem.addEventListener('mouseenter', function() {
+                                                    showStudyContent('postgraduate');
+                                                });
+                                            }
+
+                                            // Add hover event for international students menu item
+                                            const intlItem = document.querySelector('[onclick*="international"]');
+                                            if (intlItem) {
+                                                intlItem.addEventListener('mouseenter', function() {
+                                                    showStudyContent('international');
+                                                });
+                                            }
+
+                                            // Add hover event for short courses menu item
+                                            const coursesItem = document.querySelector('[onclick*="short-courses"]');
+                                            if (coursesItem) {
+                                                coursesItem.addEventListener('mouseenter', function() {
+                                                    showStudyContent('short-courses');
+                                                });
+                                            }
+
+                                            // Keep the click handlers as well for accessibility
+                                            document.querySelectorAll('.study-nav > div').forEach(item => {
+                                                item.addEventListener('click', function(e) {
+                                                    e.preventDefault();
+                                                    const section = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+                                                    showStudyContent(section);
+                                                });
+                                            });
+
+                                            // Add hover functionality for faculty items with better gap handling
+                                            document.querySelectorAll('.faculty-item').forEach(item => {
+                                                let isMouseOver = false;
+                                                let isMouseOverPrograms = false;
+                                                let hideTimeout;
+                                                
+                                                const programsList = item.querySelector('.programs-list');
+                                                
+                                                // Show the programs list
+                                                const showPrograms = () => {
+                                                    clearTimeout(hideTimeout);
+                                                    document.querySelectorAll('.faculty-item').forEach(i => i.classList.remove('active'));
+                                                    item.classList.add('active');
+                                                    isMouseOver = true;
+                                                };
+                                                
+                                                // Hide the programs list with delay
+                                                const hidePrograms = () => {
+                                                    hideTimeout = setTimeout(() => {
+                                                        if (!isMouseOver && !isMouseOverPrograms) {
+                                                            item.classList.remove('active');
+                                                        }
+                                                    }, 200); // Short delay to allow moving to programs list
+                                                };
+                                                
+                                                // Faculty item events
+                                                item.addEventListener('mouseenter', showPrograms);
+                                                item.addEventListener('mouseleave', () => {
+                                                    isMouseOver = false;
+                                                    hidePrograms();
+                                                });
+                                                
+                                                // Programs list events
+                                                if (programsList) {
+                                                    programsList.addEventListener('mouseenter', () => {
+                                                        isMouseOverPrograms = true;
+                                                        clearTimeout(hideTimeout);
+                                                    });
+                                                    
+                                                    programsList.addEventListener('mouseleave', () => {
+                                                        isMouseOverPrograms = false;
+                                                        hidePrograms();
+                                                    });
+                                                }
+                                                
+                                                // Click handler for touch devices
+                                                item.addEventListener('click', (e) => {
+                                                    if (window.innerWidth <= 991) { // Mobile view
+                                                        e.preventDefault();
+                                                        if (item.classList.contains('active')) {
+                                                            item.classList.remove('active');
+                                                        } else {
+                                                            showPrograms();
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                            
+                                            // Close all dropdowns when clicking elsewhere
+                                            document.addEventListener('click', (e) => {
+                                                if (!e.target.closest('.faculty-item') && !e.target.closest('.programs-list')) {
+                                                    document.querySelectorAll('.faculty-item').forEach(item => {
+                                                        item.classList.remove('active');
+                                                    });
+                                                }
+                                            });
                                         });
                                     </script>
                                 </li>
